@@ -5,6 +5,8 @@ using MedicalStoreSystem.Forms.Sales;
 using MedicalStoreSystem.Helpers;
 using System;
 using System.Windows.Forms;
+using System.Drawing;
+
 
 namespace MedicalStoreSystem.Forms.MainForms
 {
@@ -276,14 +278,16 @@ namespace MedicalStoreSystem.Forms.MainForms
         // قائمة المخزن
         private void menuCategories_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CategoriesForm());
+           // OpenChildForm(new CategoriesForm());
+           OpenFormInPanel(new CategoriesForm());
         }
 
         private void menuProducts_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("سيتم إنشاء شاشة المنتجات في الخطوة القادمة", "قريباً",
             //  MessageBoxButtons.OK, MessageBoxIcon.Information);
-            OpenChildForm(new Forms.Products.ProductsForm());
+            //OpenChildForm(new Forms.Products.ProductsForm());
+            OpenFormInPanel(new ProductsForm());
         }
 
         private void menuPurchasesList_Click(object sender, EventArgs e)
@@ -295,7 +299,8 @@ namespace MedicalStoreSystem.Forms.MainForms
         {
             // MessageBox.Show("سيتم إنشاء شاشة جرد المخزن لاحقاً", "قريباً",
             //   MessageBoxButtons.OK, MessageBoxIcon.Information);
-            OpenChildForm(new Forms.Products.StockInventoryForm());
+            //OpenChildForm(new Forms.Products.StockInventoryForm());
+            OpenFormInPanel(new Forms.Products.StockInventoryForm());
         }
 
         // قائمة المبيعات
@@ -309,15 +314,17 @@ namespace MedicalStoreSystem.Forms.MainForms
 
         private void menuSalesList_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.Sales.SalesListForm());
+           // OpenChildForm(new Forms.Sales.SalesListForm());
+            OpenFormInPanel(new Forms.Sales.SalesListForm());
         }
         // قائمة المشتريات
         private void menuNewPurchase_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("سيتم إنشاء شاشة فاتورة المشتريات لاحقاً", "قريباً",
             //  MessageBoxButtons.OK, MessageBoxIcon.Information);
-            PurchaseForm purchaseForm = new Forms.Purchases.PurchaseForm();
-            purchaseForm.ShowDialog();
+            /*PurchaseForm purchaseForm = new Forms.Purchases.PurchaseForm();
+            purchaseForm.ShowDialog();*/
+            OpenFormInPanel(new Forms.Purchases.PurchaseForm());
         }
 
         // قائمة العملاء والموردين
@@ -643,5 +650,64 @@ namespace MedicalStoreSystem.Forms.MainForms
         {
             OpenChildForm(new Forms.Reports.StockMovementReport());
         }
+
+        //open form in panel
+        private void OpenFormInPanel(Form frm)
+        {
+            panelMain.Controls.Clear();
+
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;   // مهم
+            frm.StartPosition = FormStartPosition.Manual;
+
+            // توسيط حسب حجم الفورم نفسه
+            frm.Location = new Point(
+                Math.Max(0, (panelMain.Width - frm.Width) / 2),
+                Math.Max(0, (panelMain.Height - frm.Height) / 2)
+            );
+
+            panelMain.Controls.Add(frm);
+            frm.Show();
+        }
+        
+
+        // هذا زر مؤقت سيتم حذفة
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFormInPanel(new ProductsForm());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFormInPanel(new CategoriesForm());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFormInPanel(new Forms.Products.StockInventoryForm());
+        }
+
+        private void menuBackup_Click_1(object sender, EventArgs e)
+        {
+            OpenFormInPanel(new Forms.Settings.BackupForm());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            POSForm posForm = new Forms.Sales.POSForm();
+            posForm.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpenFormInPanel(new Forms.Purchases.PurchaseForm());
+        }
+
+        private void menuPurchasesReport_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        // نهاية الزر المؤقت
     }
 }

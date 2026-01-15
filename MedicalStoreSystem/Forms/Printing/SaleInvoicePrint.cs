@@ -173,28 +173,28 @@ namespace MedicalStoreSystem.Forms.Printing
                 float valueX = rightMargin;
 
                 g.DrawString("الإجمالي:", fontBold, blackBrush, labelX, yPos);
-                g.DrawString($"{totalAmount:N2} ريال", fontBold, blackBrush, valueX, yPos, rightFormat);
+                g.DrawString($"{totalAmount:N2} جنية", fontBold, blackBrush, valueX, yPos, rightFormat);
                 yPos += 22;
 
                 if (discountAmount > 0)
                 {
                     g.DrawString("الخصم:", fontRegular, blackBrush, labelX, yPos);
-                    g.DrawString($"{discountAmount:N2} ريال", fontRegular, blackBrush, valueX, yPos, rightFormat);
+                    g.DrawString($"{discountAmount:N2} جنية", fontRegular, blackBrush, valueX, yPos, rightFormat);
                     yPos += 22;
                 }
 
                 g.DrawString("الصافي:", fontBold, blackBrush, labelX, yPos);
-                g.DrawString($"{netAmount:N2} ريال", fontBold, blackBrush, valueX, yPos, rightFormat);
+                g.DrawString($"{netAmount:N2} جنية", fontBold, blackBrush, valueX, yPos, rightFormat);
                 yPos += 22;
 
                 g.DrawString("المدفوع:", fontRegular, blackBrush, labelX, yPos);
-                g.DrawString($"{paidAmount:N2} ريال", fontRegular, blackBrush, valueX, yPos, rightFormat);
+                g.DrawString($"{paidAmount:N2} جنية", fontRegular, blackBrush, valueX, yPos, rightFormat);
                 yPos += 22;
 
                 if (remainingAmount > 0)
                 {
                     g.DrawString("المتبقي:", fontBold, Brushes.Red, labelX, yPos);
-                    g.DrawString($"{remainingAmount:N2} ريال", fontBold, Brushes.Red, valueX, yPos, rightFormat);
+                    g.DrawString($"{remainingAmount:N2} جنية", fontBold, Brushes.Red, valueX, yPos, rightFormat);
                     yPos += 22;
                 }
             }

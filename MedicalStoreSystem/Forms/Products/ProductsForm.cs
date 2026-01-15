@@ -1,7 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using MedicalStoreSystem.DAL;
+﻿using MedicalStoreSystem.DAL;
 using MedicalStoreSystem.Models;
+using System;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace MedicalStoreSystem.Forms.Products
 {
@@ -124,7 +125,8 @@ namespace MedicalStoreSystem.Forms.Products
 
             ClearFields();
             EnableFields();
-            txtProductCode.Focus();
+            //txtProductCode.Focus();
+            txtBarcode.Focus();
         }
 
         private void SetEditState()
@@ -191,13 +193,13 @@ namespace MedicalStoreSystem.Forms.Products
             txtBarcode.Clear();
             txtProductName.Clear();
             cmbCategory.SelectedIndex = -1;
-            cmbUnit.SelectedIndex = -1;
+            cmbUnit.SelectedIndex = 0;
             txtCostPrice.Text = "0";
             txtSalePrice.Text = "0";
             txtMinStock.Text = "10";
             txtCurrentStock.Text = "0";
             cmbSupplier.SelectedIndex = -1;
-            chkHasExpiry.Checked = true;
+            chkHasExpiry.Checked = false;
             txtNotes.Clear();
             chkIsActive.Checked = true;
             lblProfitMargin.Text = "0%";
@@ -448,7 +450,6 @@ namespace MedicalStoreSystem.Forms.Products
 
             try
             {
-                string searchTerm = txtSearch.Text.Trim();
                 string query = $@"SELECT 
                                p.ProductID AS 'الرقم',
                                p.ProductCode AS 'كود المنتج',
@@ -465,12 +466,16 @@ namespace MedicalStoreSystem.Forms.Products
                            FROM Products p
                            LEFT JOIN Categories c ON p.CategoryID = c.CategoryID
                            LEFT JOIN Suppliers s ON p.SupplierID = s.SupplierID
-                           WHERE p.ProductName LIKE '%{searchTerm}%' 
-                              OR p.ProductCode LIKE '%{searchTerm}%'
-                              OR p.Barcode LIKE '%{searchTerm}%'
+                           WHERE 
+                                p.ProductName LIKE @search
+                                OR p.ProductCode LIKE @search
+                                OR p.Barcode LIKE @search
                            ORDER BY p.ProductName";
 
-                dgvProducts.DataSource = DAL.DatabaseConnection.ExecuteDataTable(query);
+
+                SqlParameter[] parameters = { new SqlParameter("@search", "%" + txtSearch.Text.Trim() + "%") };
+
+                dgvProducts.DataSource = DAL.DatabaseConnection.ExecuteDataTable(query, parameters);
             }
             catch (Exception ex)
             {

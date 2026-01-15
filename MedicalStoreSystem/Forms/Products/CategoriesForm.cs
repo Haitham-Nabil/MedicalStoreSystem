@@ -3,10 +3,12 @@ using System.Windows.Forms;
 using MedicalStoreSystem.DAL;
 using MedicalStoreSystem.Models;
 using MedicalStoreSystem.Helpers;
-
+using Krypton.Toolkit;
+//KryptonForm
 namespace MedicalStoreSystem.Forms.Products
 {
-    public partial class CategoriesForm : Form
+    //public partial class CategoriesForm : Form
+    public partial class CategoriesForm : KryptonForm
     {
         private CategoryDAL categoryDAL = new CategoryDAL();
         private int selectedCategoryID = 0;
@@ -137,8 +139,10 @@ namespace MedicalStoreSystem.Forms.Products
             // التحقق من الإدخال
             if (string.IsNullOrWhiteSpace(txtCategoryName.Text))
             {
-                MessageBox.Show("يرجى إدخال اسم التصنيف", "تنبيه",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("يرجى إدخال اسم التصنيف", "تنبيه",
+                 //   MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 KryptonMessageBox.Show("يرجى إدخال اسم التصنيف", "تنبيه",
+                    KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Warning);
                 txtCategoryName.Focus();
                 return;
             }

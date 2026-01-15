@@ -39,6 +39,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "BackupForm";
+            this.Load += new System.EventHandler(this.BackupForm_Load);
             this.ResumeLayout(false);
 
         }

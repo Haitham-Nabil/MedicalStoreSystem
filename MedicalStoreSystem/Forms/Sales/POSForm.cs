@@ -1,11 +1,13 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
-using MedicalStoreSystem.DAL;
-using MedicalStoreSystem.Models;
-using MedicalStoreSystem.Helpers;
+﻿using MedicalStoreSystem.DAL;
 using MedicalStoreSystem.Forms.Printing;
+using MedicalStoreSystem.Forms.Reports;
+using MedicalStoreSystem.Helpers;
+using MedicalStoreSystem.Models;
+using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
 
 
 namespace MedicalStoreSystem.Forms.Sales
@@ -20,10 +22,32 @@ namespace MedicalStoreSystem.Forms.Sales
         {
             InitializeComponent();
 
+
+            // RTL
             this.RightToLeft = RightToLeft.Yes;
             this.RightToLeftLayout = true;
-            this.WindowState = FormWindowState.Maximized;
+
+            // حجم ثابت
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
+            this.Width = 1200;
+            this.Height = 750;
+
+            // 🔥 Center Screen يدوي (حل المشكلة)
+            this.StartPosition = FormStartPosition.Manual;
+
+            this.Location = new Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+                (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
+            );
+
+            //this.RightToLeft = RightToLeft.Yes;
+            //this.RightToLeftLayout = true;
+            //this.WindowState = FormWindowState.Maximized;
             this.KeyPreview = true; // لاستقبال أحداث الكيبورد
+
+
         }
 
         private void POSForm_Load(object sender, EventArgs e)
@@ -351,7 +375,7 @@ namespace MedicalStoreSystem.Forms.Sales
 
                 foreach (DataGridViewRow row in dgvCart.Rows)
                 {
-                    if (row.Cells["الإجمالي"].Value != null)
+                    if (row.Cells["TotalPrice"].Value != null)
                     {
                         totalAmount += Convert.ToDecimal(row.Cells["totalPrice"].Value);
                     }
@@ -498,9 +522,12 @@ namespace MedicalStoreSystem.Forms.Sales
                 }
 
                 // حفظ الفاتورة
-                bool success = saleDAL.InsertSale(sale);
+                //bool success = saleDAL.InsertSale(sale);
+                SaleDAL saleDAL = new SaleDAL();
+                int saleID = saleDAL.InsertSale(sale);
 
-                if (success)
+                //if (success)
+                if (saleID > 0)
                 {
                     // رسالة نجاح
                     string successMessage = "تم إتمام عملية البيع بنجاح!\n\n";
@@ -531,7 +558,7 @@ namespace MedicalStoreSystem.Forms.Sales
 
                     if (result == DialogResult.Yes)
                     {
-                        PrintInvoice(sale.SaleID);
+                        PrintInvoice(saleID);
                     }
                     
 
@@ -640,7 +667,7 @@ namespace MedicalStoreSystem.Forms.Sales
         }*/
 
 
-        //طباعة الفاتورة (متقدمة)
+        //طباعة الفاتورة (متقدمة)****************************************************************************************
         private void PrintInvoice(int saleID)
         {
             try
@@ -680,7 +707,64 @@ namespace MedicalStoreSystem.Forms.Sales
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // نهاية طباعة الفاتورة
+        // نهاية طباعة الفاتورة************************************************************************************************
+
+        //RDLC طباعة الفاتوره بطريقة
+        /*private void PrintInvoice(int saleID)
+        {
+            try
+            {
+                // خيار: طباعة عادية أو RDLC Report
+                DialogResult result = MessageBox.Show(
+                    "اختر نوع التقرير:\n\nنعم: تقرير RDLC (احترافي)\nلا: طباعة عادية",
+                    "نوع التقرير",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show(Convert.ToString(saleID));
+                    // عرض تقرير RDLC
+                    SaleInvoiceReportViewer reportViewer = new SaleInvoiceReportViewer(saleID);
+                    reportViewer.ShowDialog();
+                }
+                else if (result == DialogResult.No)
+                {
+                    // الطباعة العادية (الكود السابق)
+                    string queryInvoice = @"
+                SELECT s.SaleID, s.SaleNumber, s.SaleDate, s.TotalAmount, 
+                       s.DiscountAmount, s.NetAmount, s.PaidAmount, s.RemainingAmount,
+                       ISNULL(c.CustomerName, 'عميل نقدي') AS CustomerName,
+                       u.UserName AS CashierName
+                FROM Sales s
+                LEFT JOIN Customers c ON s.CustomerID = c.CustomerID
+                INNER JOIN Users u ON s.UserID = u.UserID
+                WHERE s.SaleID = @SaleID";
+
+                    SqlParameter[] paramsInvoice = { new SqlParameter("@SaleID", saleID) };
+                    DataTable dtInvoice = DatabaseConnection.ExecuteDataTable(queryInvoice, paramsInvoice);
+
+                    string queryItems = @"
+                SELECT sd.SaleDetailID, p.ProductName, sd.Quantity, sd.UnitPrice, sd.TotalPrice
+                FROM SalesDetails sd
+                INNER JOIN Products p ON sd.ProductID = p.ProductID
+                WHERE sd.SaleID = @SaleID
+                ORDER BY sd.SaleDetailID";
+
+                    SqlParameter[] paramsItems = { new SqlParameter("@SaleID", saleID) };
+                    DataTable dtItems = DatabaseConnection.ExecuteDataTable(queryItems, paramsItems);
+
+                    Printing.SaleInvoicePrint printInvoice = new Printing.SaleInvoicePrint(dtInvoice, dtItems);
+                    printInvoice.Print();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطأ في طباعة الفاتورة:\n{ex.Message}", "خطأ",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }*/
+        // نهاية RDLC طباعة الفاتوره بطريقة
 
         // فاتورة جديدة
         private void btnNewSale_Click(object sender, EventArgs e)
@@ -824,7 +908,20 @@ namespace MedicalStoreSystem.Forms.Sales
             }
         }
 
+        private void dgvCart_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvCart.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("هل تريد حذف هذا الصنف؟", "تأكيد",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    dgvCart.Rows.RemoveAt(e.RowIndex);
+                    CalculateTotals();
+                }
+            }
+        }
 
     }
 }

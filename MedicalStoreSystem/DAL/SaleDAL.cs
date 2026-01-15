@@ -120,7 +120,7 @@ namespace MedicalStoreSystem.DAL
         }
 
         // إضافة فاتورة مبيعات جديدة
-        public bool InsertSale(Sale sale)
+        public int InsertSale(Sale sale)
         {
             SqlConnection connection = DatabaseConnection.GetConnection();
             SqlTransaction transaction = null;
@@ -190,7 +190,7 @@ namespace MedicalStoreSystem.DAL
                             $"الكمية المتاحة من '{detail.ProductName}' غير كافية!\nالمتاح: {currentStock}",
                             "تنبيه", System.Windows.Forms.MessageBoxButtons.OK,
                             System.Windows.Forms.MessageBoxIcon.Warning);
-                        return false;
+                        return -1;
                     }
 
                     // إدراج التفصيل
@@ -258,7 +258,7 @@ namespace MedicalStoreSystem.DAL
                 }
 
                 transaction.Commit();
-                return true;
+                return saleID;
             }
             catch (Exception ex)
             {
@@ -267,7 +267,7 @@ namespace MedicalStoreSystem.DAL
 
                 System.Windows.Forms.MessageBox.Show("حدث خطأ:\n" + ex.Message, "خطأ",
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                return -1;
             }
             finally
             {

@@ -153,5 +153,10 @@ namespace MedicalStoreSystem.Forms.Settings
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void BackupForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

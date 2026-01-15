@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxData = new System.Windows.Forms.GroupBox();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -55,11 +56,11 @@
             this.groupBoxData.Controls.Add(this.label2);
             this.groupBoxData.Controls.Add(this.txtCategoryName);
             this.groupBoxData.Controls.Add(this.label1);
-            this.groupBoxData.Location = new System.Drawing.Point(54, 4);
-            this.groupBoxData.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBoxData.Location = new System.Drawing.Point(46, 3);
+            this.groupBoxData.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBoxData.Size = new System.Drawing.Size(1028, 244);
+            this.groupBoxData.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBoxData.Size = new System.Drawing.Size(952, 176);
             this.groupBoxData.TabIndex = 0;
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "بيانات التصنيف";
@@ -70,8 +71,8 @@
             this.chkIsActive.Checked = true;
             this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkIsActive.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIsActive.Location = new System.Drawing.Point(778, 193);
-            this.chkIsActive.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.chkIsActive.Location = new System.Drawing.Point(667, 139);
+            this.chkIsActive.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(81, 44);
             this.chkIsActive.TabIndex = 4;
@@ -81,19 +82,19 @@
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(363, 110);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txtDescription.Location = new System.Drawing.Point(311, 79);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(506, 82);
+            this.txtDescription.Size = new System.Drawing.Size(434, 60);
             this.txtDescription.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(876, 110);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(751, 79);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 40);
             this.label2.TabIndex = 2;
@@ -102,10 +103,10 @@
             // txtCategoryName
             // 
             this.txtCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoryName.Location = new System.Drawing.Point(363, 27);
-            this.txtCategoryName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txtCategoryName.Location = new System.Drawing.Point(311, 20);
+            this.txtCategoryName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCategoryName.Name = "txtCategoryName";
-            this.txtCategoryName.Size = new System.Drawing.Size(506, 35);
+            this.txtCategoryName.Size = new System.Drawing.Size(434, 35);
             this.txtCategoryName.TabIndex = 1;
             // 
             // label1
@@ -113,8 +114,8 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Dubai", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(876, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(751, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 40);
             this.label1.TabIndex = 0;
@@ -127,23 +128,25 @@
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Location = new System.Drawing.Point(54, 256);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox1.Location = new System.Drawing.Point(46, 185);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1028, 103);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Size = new System.Drawing.Size(952, 74);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.MistyRose;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCancel.Font = new System.Drawing.Font("Dubai", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.btnCancel.Location = new System.Drawing.Point(321, 27);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnCancel.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(275, 20);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(119, 60);
+            this.btnCancel.Size = new System.Drawing.Size(102, 43);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "إلغاء";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -152,13 +155,14 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Red;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDelete.Font = new System.Drawing.Font("Dubai", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(450, 27);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnDelete.Location = new System.Drawing.Point(386, 20);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(117, 60);
+            this.btnDelete.Size = new System.Drawing.Size(100, 43);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "حذف";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -167,11 +171,13 @@
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.Orange;
-            this.btnEdit.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(577, 27);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(494, 20);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(118, 60);
+            this.btnEdit.Size = new System.Drawing.Size(101, 43);
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "تعديل";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -180,11 +186,13 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Blue;
-            this.btnSave.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(705, 26);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(604, 19);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(128, 63);
+            this.btnSave.Size = new System.Drawing.Size(110, 46);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -193,11 +201,13 @@
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.Green;
-            this.btnAdd.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(843, 26);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(722, 19);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(175, 63);
+            this.btnAdd.Size = new System.Drawing.Size(150, 46);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "إضافة جديد";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -205,13 +215,24 @@
             // 
             // dgvCategories
             // 
-            this.dgvCategories.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvCategories.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCategories.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(136)))), ((int)(((byte)(229)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategories.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvCategories.Location = new System.Drawing.Point(0, 503);
-            this.dgvCategories.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dgvCategories.EnableHeadersVisualStyles = false;
+            this.dgvCategories.Location = new System.Drawing.Point(0, 365);
+            this.dgvCategories.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvCategories.Name = "dgvCategories";
-            this.dgvCategories.Size = new System.Drawing.Size(1122, 203);
+            this.dgvCategories.RowTemplate.Height = 32;
+            this.dgvCategories.Size = new System.Drawing.Size(1213, 320);
             this.dgvCategories.TabIndex = 2;
             this.dgvCategories.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellDoubleClick);
             this.dgvCategories.SelectionChanged += new System.EventHandler(this.dgvCategories_SelectionChanged);
@@ -222,19 +243,20 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1122, 373);
+            this.panel1.Size = new System.Drawing.Size(1213, 269);
             this.panel1.TabIndex = 3;
             // 
             // CategoriesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 706);
+            this.ClientSize = new System.Drawing.Size(1213, 685);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvCategories);
-            this.Font = new System.Drawing.Font("Dubai Light", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "CategoriesForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
